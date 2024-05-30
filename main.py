@@ -4,12 +4,17 @@ import sys
 import math
 import random
 import time
+import OpenGL_accelerate
+from OpenGL.GLUT import *
 
 from collections import deque
 from pyglet import image
 from pyglet.gl import *
 from pyglet.graphics import TextureGroup
 from pyglet.window import key, mouse
+
+from OpenGL.GL import *
+from OpenGL.GLU import *
 
 TICKS_PER_SEC = 60
 
@@ -769,9 +774,9 @@ class Window(pyglet.window.Window):
             self.reticle.delete()
         x, y = self.width // 2, self.height // 2
         n = 10
-        self.reticle = pyglet.graphics.vertex_list(4,
-            ('v2i', (x - n, y, x + n, y, x, y - n, x, y + n))
-        )
+        #self.reticle = pyglet.graphics.vertex_list(4,
+        #    ('v2i', (x - n, y, x + n, y, x, y - n, x, y + n))
+        #)
 
     def set_2d(self):
         """ Configure OpenGL to draw in 2d.
@@ -856,6 +861,7 @@ def setup_fog():
     """ Configure the OpenGL fog properties.
 
     """
+    return
     # Enable fog. Fog "blends a fog color with each rasterized pixel fragment's
     # post-texturing color."
     glEnable(GL_FOG)
